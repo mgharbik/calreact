@@ -20,5 +20,10 @@
 # Ignore Byebug command history file.
 .byebug_history
 
-· Ignore IDE files
+# Ignore IDE files
 .idea/
+
+# Ignore React packages
+/public/packs
+/public/packs-test
+/node_modules
