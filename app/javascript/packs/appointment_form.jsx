@@ -5,14 +5,14 @@ import 'react-datetime/css/react-datetime'
 export default class AppointmentForm extends React.Component {
   handleChange (e) {
     const name = e.target.name;
-    obj = {};
+    const obj = {};
     obj[name] = e.target.value;
     this.props.onUserInput(obj);
   }
 
   setAppointmentTime (e) {
     const name = 'appt_time';
-    obj = {};
+    const obj = {};
     if(obj[name] = e.toDate()) {
       this.props.onUserInput(obj);
     }

@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import AppointmentForm from './appointment_form'
-import { AppointmentsList } from './appointments_list'
+import AppointmentsList from './appointments_list'
 import update from 'immutability-helper'
 
 export default class Appointments extends React.Component {
@@ -39,8 +39,8 @@ export default class Appointments extends React.Component {
   render () {
     return (
       <div>
-        <AppointmentForm input_title={this.state.title}
-                         input_appt_time={this.state.appt_time}
+        <AppointmentForm title={this.state.title}
+                         appt_time={this.state.appt_time}
                          onUserInput={(obj) => this.handleUserInput(obj)}
                          onFormSubmit={() => this.handleFormSubmit()} />
         <AppointmentsList appointments={this.state.appointments} />
