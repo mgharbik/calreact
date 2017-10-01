@@ -26,13 +26,13 @@ class AppointmentForm extends React.Component {
     return (
       <div>
         <h3>Make a new Appointment</h3>
-        <form onSubmit={this.handleSubmit.bind(this)}>
+        <form onSubmit={(e) => this.handleSubmit(e)}>
           <input name='title' placeholder='Appointment Title'
                  value={this.props.title}
-                 onChange={this.handleChange.bind(this)} />
+                 onChange={(e) => this.handleChange(e)} />
           <Datetime input={false} open={true} inputProps={inputProps}
                     value={this.props.appt_time}
-                    onChange={this.setAppointmentTime.bind(this)} />
+                    onChange={(e) => this.setAppointmentTime(e)} />
           <input type='submit' value='Make Appointment' className='submit-button' />
         </form>
       </div>
