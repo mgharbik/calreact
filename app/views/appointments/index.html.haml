@@ -2,7 +2,7 @@
 
 %h2 Appointments
 
-#appointments_data{data: @appointments.to_json}
+= react_component 'Appointments', props: { appointments: @appointments }
 
-= javascript_pack_tag 'appointments'
-= stylesheet_pack_tag 'appointments'
+= javascript_pack_tag 'appointments-bundle'
+= stylesheet_pack_tag 'appointments-bundle'
