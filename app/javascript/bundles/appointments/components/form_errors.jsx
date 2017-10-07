@@ -5,7 +5,7 @@ const FormErrors = ({formErrors}) =>
     {Object.keys(formErrors).map((formErrorField) => {
       return (
         formErrors[formErrorField].map((error) => {
-          return <p>{formErrorField} {error}</p>;
+          return <p key={formErrorField}>{formErrorField} {error}</p>;
         })
       )
     })}
