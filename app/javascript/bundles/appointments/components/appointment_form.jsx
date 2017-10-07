@@ -36,7 +36,7 @@ export default class AppointmentForm extends React.Component {
 
   handleChange = (e) => {
     const fieldName = this.titleInput.name;
-    const fieldValue = this.titleInput.target.value;
+    const fieldValue = this.titleInput.value;
     this.props.onUserInput(fieldName, fieldValue, AppointmentForm.formValidations[fieldName]);
   }
 
