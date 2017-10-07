@@ -4,6 +4,7 @@ import AppointmentForm from './appointment_form'
 import AppointmentsList from './appointments_list'
 import update from 'immutability-helper'
 import FormErrors from './form_errors'
+import moment from 'moment'
 
 export default class Appointments extends React.Component {
   constructor (props) {
@@ -13,7 +14,7 @@ export default class Appointments extends React.Component {
       title: '',
       appt_time: '',
       formErrors: {},
-      formValid: true,
+      formValid: false,
     }
   }
 
@@ -22,7 +23,9 @@ export default class Appointments extends React.Component {
   }
 
   validateForm () {
-    this.setState({formValid: this.state.title.trim().length > 2 })
+    this.setState({formValid: this.state.title.trim().length > 2 &&
+                              moment(this.state.appt_time).isValid() &&
+                              moment(this.state.appt_time).isAfter()})
   }
 
   handleFormSubmit = () => {
