@@ -1,18 +1,21 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import PropTypes from 'prop-types'
 import AppointmentForm from './appointment_form'
 import AppointmentsList from './appointments_list'
-import update from 'immutability-helper'
 import FormErrors from './form_errors'
-import moment from 'moment'
+import update from 'immutability-helper'
 
 export default class Appointments extends React.Component {
+  static propTypes = {
+    appointments: PropTypes.array.isRequired,
+  }
+
   constructor (props) {
     super(props)
     this.state = {
       appointments: this.props.appointments,
       title: {value: '', valid: false},
-      appt_time: {value: '', valid: false},
+      appt_time: {value: new Date(), valid: false},
       formErrors: {},
       formValid: false,
     }
