@@ -113,6 +113,7 @@ export default class AppointmentForm extends React.Component {
       data: {appointment: appointment}
     })
     .done((data) => {
+      console.log('appointment updated!');
       this.resetFormErrors();
     })
     .fail((response) => {
@@ -125,6 +126,26 @@ export default class AppointmentForm extends React.Component {
     this.titleInput.focus();
   }
 
+  deleteAppointment = () => {
+    if(confirm('Are you sure you want to delete this appointment?')) {
+      $.ajax({
+        type: 'DELETE',
+        url: `/appointments/${this.props.match.params.id}`,
+      })
+      .done((data) => {
+        this.props.history.push('/');
+        this.resetFormErrors();
+      })
+      .fail((response) => {
+        console.log('appointment deleting failed!');
+      });
+    }
+  }
+
+  resetFormErrors () {
+    this.setState({formErrors: {}});
+  }
+
   handleChange = (e) => {
     const fieldName = this.titleInput.name;
     const fieldValue = this.titleInput.value;
@@ -135,10 +156,6 @@ export default class AppointmentForm extends React.Component {
     const fieldName = 'appt_time';
     const fieldValue = e.toDate();
     this.handleUserInput(fieldName, fieldValue, AppointmentForm.formValidations[fieldName]);
-  }
-
-  resetFormErrors () {
-    this.setState({formErrors: {}});
   }
 
   render () {
@@ -169,6 +186,11 @@ export default class AppointmentForm extends React.Component {
             className='submit-button'
             disabled={!this.state.formValid} />
         </form>
+        {this.state.editing && (
+          <button onClick={this.deleteAppointment}>
+            Delete Appointment
+          </button>
+        )}
       </div>
     )
   }

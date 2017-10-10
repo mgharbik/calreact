@@ -10,7 +10,10 @@ class AppointmentsController < ApplicationController
 
   def show
     @appointment = Appointment.find(params[:id])
-    render json: @appointment
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @appointment }
+    end
   end
 
   def edit
@@ -32,6 +35,16 @@ class AppointmentsController < ApplicationController
 
     if @appointment.save
       render json: @appointment
+    else
+      render json: @appointment.errors, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @appointment = Appointment.find(params[:id])
+
+    if @appointment.destroy
+      head :no_content, status: :ok
     else
       render json: @appointment.errors, status: :unprocessable_entity
     end
