@@ -44,5 +44,6 @@ gem 'webpacker', '~> 3.0'
 gem 'foreman'
 gem 'haml'
 gem 'momentjs-rails'
+gem 'devise'
 
 gem 'mini_racer', platforms: :ruby
