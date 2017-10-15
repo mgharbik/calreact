@@ -44,7 +44,8 @@ gem 'webpacker', '~> 3.0'
 gem 'foreman'
 gem 'haml'
 gem 'momentjs-rails'
-gem 'devise'
+gem 'devise_token_auth'
+gem 'omniauth'
 gem 'rack-cors', require: 'rack/cors'
 
 gem 'mini_racer', platforms: :ruby
