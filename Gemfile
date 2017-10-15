@@ -45,5 +45,6 @@ gem 'foreman'
 gem 'haml'
 gem 'momentjs-rails'
 gem 'devise'
+gem 'rack-cors', require: 'rack/cors'
 
 gem 'mini_racer', platforms: :ruby
